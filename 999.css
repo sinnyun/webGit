@@ -1,0 +1,305 @@
+
+/* 网格布局 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 一排三列 */
+    gap: 20px;
+    padding:0 20% 0;
+    margin: 0 auto; /* 居中 */
+  
+  }
+  
+  
+  /* 卡片样式 */
+  .card {
+    position: relative;
+    overflow: hidden; /* 确保图片旋转时不会溢出 */
+    height: 100%;
+    /* border-radius: 10px; */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* 图片悬停时效果 */
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 确保图片填满盒子 */
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+  }
+  
+  .card:hover img {
+    filter: brightness(50%);
+    transform: scale(1.1) rotate(-5deg); /* 放大并旋转 */
+  }
+  
+  /* 文字浮现动画 */
+  .card-title, .card-tag {
+    position: absolute;
+    left: 10px;
+    bottom: -20px;
+    color: white;
+    font-size: 1.2em;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  }
+  
+  .card:hover .card-title {
+    bottom: 30px;
+    opacity: 1;
+    transition-delay: 0.1s;
+  }
+  
+  .card:hover .card-tag {
+    bottom: 10px;
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+  
+  /* 悬停时卡片盒的抖动效果 */
+  .card:hover {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  
+
+
+
+
+
+
+
+
+
+  /* 002 */
+
+  
+/* 网格布局 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 一排三列 */
+    gap: 20px;
+    padding:0 20%;
+    margin: 0 auto; /* 居中 */
+  }
+  
+  /* 卡片样式 */
+  .card {
+    position: relative;
+    /* position: absolute; */
+    overflow: hidden;
+    width: 100%;
+    /* height:200px; */
+  
+  
+    /* z-index: 0; */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  /* 图片样式 */
+  .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: relative;
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    opacity: 1;
+    z-index: 1;
+  }
+  
+  
+  .card a {
+    /* color: #ffffff;                      */
+    position: relative;       
+  
+     /* 确保内容在上面 */
+    z-index: 8;
+    height: 100%; 
+    width: 100%;                       /* 让链接高度占满整个框 */
+   
+  }
+  
+  /* 文字浮现动画 */
+  .card-title {
+    bottom: -20px;
+    color: white;
+    font-size: 1.2em;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  }
+  
+  .card-tag {
+    bottom: -20px;
+    color: rgba(249, 249, 249, 0.452);
+    font-size: 0.8em;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  }
+  
+  /* 文字浮动在遮罩层之上 */
+  .card-title, .card-tag {
+    z-index: 5; /* 确保文字在伪元素之上 */
+    position: absolute;
+    left: 10%;
+    transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out;
+  }
+  
+  
+  .card:hover .card-title {
+    bottom: 60px;
+    opacity: 1;
+    transition-delay: 0.1s;
+  }
+  
+  .card:hover .card-tag {
+  
+    bottom: 20px;
+    opacity: 1;
+    transition-delay: 0.2s;
+  }
+  
+  /* 悬停时卡片盒的抖动效果 */
+  .card:hover {
+    transform: translateY(-5px) rotate(1deg);
+  }
+  
+  
+  
+  /* 添加遮罩层的伪元素 */
+  .card::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(0, 0, 0); /* 默认半透明 */
+    opacity: 0;
+    transition: opacity 0.3s ease, background-color 0.3s ease; /* 过渡效果一致 */
+    z-index: 2; /* 确保在图片之上，但在文字之下 */
+  }
+  
+  /* 鼠标悬停时显示遮罩层 */
+  .card:hover::after {
+    opacity: 1;
+    background-color: rgba(0, 0, 0, 0.498); /* 鼠标悬停时显示半透明黑色 */
+  
+  }
+  
+  
+  
+  /* 卡片标题悬停时浮现 */
+  /* .card:hover .card-title {
+    bottom: 30px;
+    opacity: 1;
+    transition-delay: 0.1s;
+  }
+  
+  .card:hover .card-tag {
+    bottom: 10px;
+    opacity: 1;
+    transition-delay: 0.2s;
+  } */
+  
+  
+  
+  
+  /* 响应式设计：在手机屏幕下显示为一列，并调整卡片尺寸为横版 */
+  @media (max-width: 768px) {
+    .grid-container {
+      grid-template-columns: 1fr; /* 一排一列 */
+      padding: 0 10px; /* 减少边距 */
+    }
+    
+    .card {
+      width: 100%;
+      aspect-ratio: 16/9; /* 横版尺寸，16:9比例 */
+    }
+  }
+  
+/* 
+  <!-- 卡片第一列 -->
+
+  <!-- <div class="card" id="list_1">
+      <img data-src="./img/work01 (1).webp" alt="Project Image 1" class="lazy" id="list_img_1"> 
+      <div class="card-num" id="list_num_1" > 
+        <a class="hover-target external_link"  href="https://www.baidu.com/" target="_blank" >  &nbsp;&nbsp;  01  </a> </div>
+      <div class="card-title" id="list_title_1"> 
+        Project 1  </div>
+      <div class="card-tag" id="list_tag_1">
+        Category 2 </div> 
+  </div> -->
+  <!-- 卡片第二列 -->
+  <!-- <div class="card" id="list_2">
+    <a class="hover-target" href="https://www.baidu.com/">
+      <img data-src="./img/work01 (2).webp" alt="Project Image 2" class="lazy" id="list_img_2">
+      <div class="card-title" id="list_title_2">Project 2</div>
+      <div class="card-tag" id="list_tag_2">Category 2</div>
+    </a>
+  </div>
+
+      <div class="card" id="list_3">
+    <a class="hover-target" href="https://www.baidu.com/">
+      <img data-src="./img/work01 (3).webp" alt="Project Image 3" class="lazy" id="list_img_3">
+      <div class="card-title" id="list_title_2">Project 3</div>
+      <div class="card-tag" id="list_tag_2">Category 3</div>
+    </a>
+  </div>
+  <div class="card" id="list_4">
+    <a class="hover-target" href="https://www.baidu.com/4">
+      <img data-src="./img/work01 (4).webp" alt="Project Image 4" class="lazy" id="list_img_4">
+      <div class="card-title" id="list_title_4">Project 4</div>
+      <div class="card-tag" id="list_tag_4">Category 4</div>
+    </a>
+  </div>
+
+
+<div class="card" id="list_1">
+    <a class="hover-target" href="https://www.baidu.com/1">
+      <img data-src="./img/work01 (1).webp" alt="Project Image 1" class="lazy" id="list_img_1">
+      <div class="card-title" id="list_title_1">Project 1</div>
+      <div class="card-tag" id="list_tag_1">Category 1</div>
+    </a>
+  </div>
+  
+  <div class="card" id="list_2">
+    <a class="hover-target" href="https://www.baidu.com/2">
+      <img data-src="./img/work01 (2).webp" alt="Project Image 2" class="lazy" id="list_img_2">
+      <div class="card-title" id="list_title_2">Project 2</div>
+      <div class="card-tag" id="list_tag_2">Category 2</div>
+    </a>
+  </div>
+    */
+
+
+<li class="active" > 
+    <div class="menu-tittle"  style="background-image: url(./image/work_list/work-web-bg.jpg);"  > </div>
+      <a href="./work.html" class="hover-target" data-img=""   >   
+       <h2>   <div class="work_t01_1">
+       </div> </h2>
+       <span>  <strong>  <div class="work_f01_1">
+       </div>  </strong> </span>
+       <span>   <div class="work_f01_2">
+       </div>   </span> 
+      </a>  
+</li>
+
+.menu-tittle {
+    position: absolute;
+    padding: 0px;
+    opacity: 0.5;
+    width: 102%;
+    height: 90%;
+    /* height: 220px; */
+    /* background-color: #000000; */
+    /* 向右对齐 垂直居中 */
+    top: 50%; 
+    right: 0;
+    transform: translateY(-50%);
+    left: -4vh;
+    /* top: 0; */
+    z-index: 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    transition: opacity .3s ease-in-out;
+  }
+  

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Portfolio</title>
+  <style>
+    /* 网格布局 */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr); /* 一排三列 */
+      gap: 20px;
+      width: 50%; /* 占据页面一半宽度 */
+      margin: 0 auto; /* 居中 */
+    }
+
+    /* 卡片样式 */
+    .card {
+      position: relative;
+      overflow: hidden; /* 确保图片旋转时不会溢出 */
+      border-radius: 10px;
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* 图片悬停时效果 */
+    .card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; /* 确保图片填满盒子 */
+      transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    }
+
+    .card:hover img {
+      filter: brightness(50%);
+      transform: scale(1.1) rotate(-5deg); /* 放大并旋转 */
+    }
+
+    /* 文字浮现动画 */
+    .card-title, .card-tag {
+      position: absolute;
+      left: 10px;
+      bottom: -20px;
+      color: white;
+      font-size: 1.2em;
+      opacity: 0;
+      transition: opacity 0.3s ease-in-out, bottom 0.3s ease-in-out;
+    }
+
+    .card:hover .card-title {
+      bottom: 30px;
+      opacity: 1;
+      transition-delay: 0.1s;
+    }
+
+    .card:hover .card-tag {
+      bottom: 10px;
+      opacity: 1;
+      transition-delay: 0.2s;
+    }
+
+    /* 悬停时卡片盒的抖动效果 */
+    .card:hover {
+      transform: translateY(-5px) rotate(1deg);
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Portfolio</h1>
+  </header>
+
+  <!-- 网格布局 -->
+  <section class="grid-container">
+    <!-- 手动添加的卡片 -->
+    <div class="card" id="list_1">
+      <a href="https://example.com/project1">
+        <img data-src="./img/work01 (1).webp" alt="Project Image 1" class="lazy" id="list_img_1">
+        <div class="card-title" id="list_title_1">Project 1</div>
+        <div class="card-tag" id="list_tag_1">Category 1</div>
+      </a>
+    </div>
+    
+    <div class="card" id="list_2">
+      <a href="https://example.com/project2">
+        <img data-src="./img/work01 (2).webp" alt="Project Image 2" class="lazy" id="list_img_2">
+        <div class="card-title" id="list_title_2">Project 2</div>
+        <div class="card-tag" id="list_tag_2">Category 2</div>
+      </a>
+    </div>
+        <div class="card" id="list_3">
+      <a href="https://example.com/project3">
+        <img data-src="./img/work01 (3).webp" alt="Project Image 3" class="lazy" id="list_img_3">
+        <div class="card-title" id="list_title_2">Project 3</div>
+        <div class="card-tag" id="list_tag_2">Category 3</div>
+      </a>
+    </div>
+    <div class="card" id="list_4">
+      <a href="https://example.com/project4">
+        <img data-src="./img/work01 (4).webp" alt="Project Image 4" class="lazy" id="list_img_4">
+        <div class="card-title" id="list_title_4">Project 4</div>
+        <div class="card-tag" id="list_tag_4">Category 4</div>
+      </a>
+    </div>
+
+
+<div class="card" id="list_1">
+      <a href="https://example.com/project1">
+        <img data-src="./img/work01 (1).webp" alt="Project Image 1" class="lazy" id="list_img_1">
+        <div class="card-title" id="list_title_1">Project 1</div>
+        <div class="card-tag" id="list_tag_1">Category 1</div>
+      </a>
+    </div>
+    
+    <div class="card" id="list_2">
+      <a href="https://example.com/project2">
+        <img data-src="./img/work01 (2).webp" alt="Project Image 2" class="lazy" id="list_img_2">
+        <div class="card-title" id="list_title_2">Project 2</div>
+        <div class="card-tag" id="list_tag_2">Category 2</div>
+      </a>
+    </div>
+        <div class="card" id="list_3">
+      <a href="https://example.com/project3">
+        <img data-src="./img/work01 (3).webp" alt="Project Image 3" class="lazy" id="list_img_3">
+        <div class="card-title" id="list_title_2">Project 3</div>
+        <div class="card-tag" id="list_tag_2">Category 3</div>
+      </a>
+    </div>
+    <div class="card" id="list_4">
+      <a href="https://example.com/project4">
+        <img data-src="./img/work01 (4).webp" alt="Project Image 4" class="lazy" id="list_img_4">
+        <div class="card-title" id="list_title_4">Project 4</div>
+        <div class="card-tag" id="list_tag_4">Category 4</div>
+      </a>
+    </div><div class="card" id="list_1">
+      <a href="https://example.com/project1">
+        <img data-src="./img/work01 (1).webp" alt="Project Image 1" class="lazy" id="list_img_1">
+        <div class="card-title" id="list_title_1">Project 1</div>
+        <div class="card-tag" id="list_tag_1">Category 1</div>
+      </a>
+    </div>
+    
+    <div class="card" id="list_2">
+      <a href="https://example.com/project2">
+        <img data-src="./img/work01 (2).webp" alt="Project Image 2" class="lazy" id="list_img_2">
+        <div class="card-title" id="list_title_2">Project 2</div>
+        <div class="card-tag" id="list_tag_2">Category 2</div>
+      </a>
+    </div>
+        <div class="card" id="list_3">
+      <a href="https://example.com/project3">
+        <img data-src="./img/work01 (3).webp" alt="Project Image 3" class="lazy" id="list_img_3">
+        <div class="card-title" id="list_title_2">Project 3</div>
+        <div class="card-tag" id="list_tag_2">Category 3</div>
+      </a>
+    </div>
+    <div class="card" id="list_4">
+      <a href="https://example.com/project4">
+        <img data-src="./img/work01 (4).webp" alt="Project Image 4" class="lazy" id="list_img_4">
+        <div class="card-title" id="list_title_4">Project 4</div>
+        <div class="card-tag" id="list_tag_4">Category 4</div>
+      </a>
+    </div>
+    <!-- 重复添加直到 list_15 -->
+    <div class="card" id="list_15">
+      <a href="https://example.com/project15">
+        <img data-src="./img/work01 (15).webp" alt="Project Image 15" class="lazy" id="list_img_15">
+        <div class="card-title" id="list_title_15">Project 15</div>
+        <div class="card-tag" id="list_tag_15">Category 15</div>
+      </a>
+    </div>
+  </section>
+
+  <script>
+    // 懒加载图片
+    document.addEventListener("DOMContentLoaded", function() {
+      const lazyImages = document.querySelectorAll('.lazy');
+      const lazyLoad = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            img.src = img.dataset.src;
+            img.classList.remove('lazy');
+            observer.unobserve(img);
+          }
+        });
+      });
+
+      lazyImages.forEach(img => {
+        lazyLoad.observe(img);
+      });
+    });
+  </script>
+</body>
+</html>
